@@ -12,11 +12,12 @@ const UserProfile = () => {
         <div>
           <Profile />
         </div>
-        <div className="flex-wrap  w-full gap-10 mt-16 ml-20 ">
-          <AddWork />
+        <div className="flex-wrap  gap-10 mt-6 ml-20 ">
+          {/* <AddWork /> */}
 
-          <div className="w-full mt-10">
-            <UserWorkCard />
+          <div className=" mt-10">
+            
+            <UserWorkCard role = {"user"} />
           </div>
         </div>
       </div>

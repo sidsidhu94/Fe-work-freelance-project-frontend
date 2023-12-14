@@ -36,6 +36,9 @@ const SignIn = () => {
         navigate('/home')
         toast.success('logged in succesfully')
       }
+      // if(res.message === 'Not a registered user'){
+      //   toast.success('Not a registered user')
+      // }
       
     } catch (error) {
       console.log(error.message)

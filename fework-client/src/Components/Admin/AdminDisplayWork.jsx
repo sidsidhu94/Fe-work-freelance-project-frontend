@@ -8,9 +8,12 @@ import {
   Button,
 } from "@nextui-org/react";
 import axios from "axios";
+import UserWorkDisplay from "../User/UserWorkDisplay";
 
 const AdminDisplayWork = () => {
   const [userwork, setUserwork] = useState([]);
+  const [clickedWork, setclickedWork] = useState({})
+  const [WorkDisplay, setWorkDisplay] = useState(false);
 
   useEffect(() => {
     const userwork = async () => {
@@ -22,6 +25,15 @@ const AdminDisplayWork = () => {
     };
     userwork();
   }, []);
+  function modalClose(response){
+    
+    setWorkDisplay(response)
+  }
+
+  useEffect(()=>{
+    WorkDisplay ? document.getElementById("my_modal_1").showModal() : null;
+  },[WorkDisplay])
+
 
   useEffect(() => {
     console.log(userwork, "stateeee");
@@ -30,43 +42,55 @@ const AdminDisplayWork = () => {
     console.log(Array.isArray(userwork?.images));
   }, [userwork]);
 
+  function handleSubmit() {
+    setWorkDisplay(true);
+  }
+
+  const [role, setrole] = useState("admin")
+
   return (
-    // <div className="w-72 h-72 ">
-    <div className="flex flex-wrap gap-10">
-      {userwork?.map((data) => {
-        return (
-          <>
-            <div className="w-72 h-72">
-              <Card
-                isFooterBlurred
-                className="w-full h-full col-span-12 sm:col-span-7 rounded-lg"
-              >
-                {/* <CardHeader className="absolute z-10 top-1 flex-col items-start">
+    <>
+    <>
+    {WorkDisplay && <div className="w-full h-screen">
+      <UserWorkDisplay role={"admin"} modalClose={modalClose} clickedWork = {clickedWork} />
+      </div>}</>
+
+      <div className="flex flex-wrap gap-10">
+        {userwork?.map((data) => {
+          return (
+            <>
+              <div onClick={() => [handleSubmit(), setclickedWork(data)]} className="w-72 h-72">
+                <Card
+                  isFooterBlurred
+                  className="w-full h-full col-span-12 sm:col-span-7 rounded-lg"
+                >
+                  {/* <CardHeader className="absolute z-10 top-1 flex-col items-start">
         
         <p className="text-tiny text-white uppercase font-bold">Your day your way</p>
         <h4 className="text-white font-bold uppercase  text-xl">Your checklist for better sleep</h4>
       </CardHeader> */}
 
-                <Image
-                  removeWrapper
-                  alt="Relaxing app background"
-                  className="z-0 w-full h-full object-cover rounded-lg"
-                  src={data?.images?.[0].image}
-                />
-                <CardHeader className="absolute z-10 bottom-1 flex-col items-start ">
-                  <p className="text-tiny text-cyan-700 uppercase font-bold">
-                    {data.work_caption}
-                  </p>
-                  <h4 className="text-cyan-700 uppercase text-xl">
-                    {data.work_description}
-                  </h4>
-                </CardHeader>
-              </Card>
-            </div>
-          </>
-        );
-      })}
-    </div>
+                  <Image
+                    removeWrapper
+                    alt="Relaxing app background"
+                    className="z-0 w-full h-full object-cover rounded-lg"
+                    src={data?.images?.[0].image}
+                  />
+                  <CardHeader className="absolute z-10 bottom-1 flex-col items-start ">
+                    <p className="text-tiny text-cyan-700 uppercase font-bold">
+                      {data.work_caption}
+                    </p>
+                    <h4 className="text-cyan-700 uppercase text-xl">
+                      {data.work_description}
+                    </h4>
+                  </CardHeader>
+                </Card>
+              </div>
+            </>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

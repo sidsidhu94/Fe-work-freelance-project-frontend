@@ -25,12 +25,16 @@ const HomePageHeader = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 border border-b-cyan-700 rounded-xl ">
-        <div className="flex-1">
+      <div className="navbar bg-base-100  ">
+        <div className="flex-1 gap-10">
           
           <a onClick={() => navigate('/home')} className="btn btn-ghost normal-case text-3xl  text-cyan-700">fe.Work</a>
+          <h1 onClick={()=> navigate('/home')} className=" text-cyan-700 text-xl " >Discover</h1>
+          <h1 onClick={()=> navigate('/userprofiles')} className=" text-cyan-700 text-xl " >Hire</h1>
+          <h1 className=" text-cyan-700 text-xl ">Jobs</h1>
         </div>
-        <div className="flex-none gap-2">
+       
+        <div className="flex-none gap-10">
           <div className="form-control">
             {/* <input
               type="text"
@@ -38,11 +42,15 @@ const HomePageHeader = () => {
               className="input input-bordered w-24 md:w-auto"
             /> */}
           </div>
+          {/* <div className="text-cyan-700 text-lg flex font-semibold   items-center  ">
+            REQUESTS
+          </div> */}
           <div className="text-cyan-700 text-lg flex   items-center gap-1 mr-3" onClick={() =>navigate('/inbox')}>
-
+            
             
             <IoMdChatbubbles/><p className="font-semibold" >INBOX</p>
           </div>
+          
           
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -76,6 +84,16 @@ const HomePageHeader = () => {
           </div>
         </div>
       </div>
+      {/* <div className="w-full h-60 mt-6 text-center flex justify-center relative ">
+      <img className="absolute w-full h-full" src="https://png.pngtree.com/thumb_back/fh260/back_pic/02/50/63/71577e1cf59d802.jpg" alt="" />
+      <div className="absolute m-auto top-0 bottom-0 w-fit  flex-col h-full   ">
+      <h1 className="text-7xl text-white font-bold m-auto mt-8 ">Best of fe.Work</h1>
+        <h1 className="text-2xl text-white mt-4 m-auto">Projects featured today by our curators</h1>
+
+      </div>
+       
+
+      </div> */}
     </div>
   );
 };
