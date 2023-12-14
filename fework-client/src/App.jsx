@@ -13,19 +13,28 @@ import UserRegister from './Pages/User/UserRegister';
 import UserHomepage from './Pages/User/UserHomepage';
 import UserProfile from './Pages/User/UserProfile';
 import AdminLoginPage from './Pages/Admin/AdminLoginPage';
-import AdminUserList from './Pages/Admin/AdminUserList';
-import EditProfile from './Components/User/EditProfile';
+
 import UserEditProfile from './Pages/User/UserEditProfile';
-import AdminDashboard from './Components/Admin/AdminDashboard';
+
 import AdminDashboardPage from './Pages/Admin/AdminDashboardPage';
-import AddWorkPage from './Components/User/AddWorkPage';
+
 import AddWorks from './Pages/User/AddWorks';
 import UserWorkCard from './Components/User/UserWorkCard';
 import UserInbox from './Components/User/UserInbox';
 import UsersInbox from './Components/User/UsersInbox';
-import AdminPostVerify from './Components/Admin/AdminPostVerify';
-import AdminDisplayWork from './Components/Admin/AdminDisplayWork';
+
 import AdminVerifyPage from './Pages/Admin/AdminVerifyPage';
+import UserWorkDisplay from './Components/User/UserWorkDisplay';
+
+import HireUser from './Pages/User/HireUser';
+import UserselectedProfile from './Pages/User/UserselectedProfile';
+import Comment from './Components/User/Comment';
+import VideoCall from './Components/User/VideoCall';
+import UserVideoCall from './Components/User/UserVideoCall';
+import Premium from './Components/Admin/Premium';
+import AdminPremiumAdd from './Pages/Admin/AdminPremiumAdd';
+import Message from './Pages/User/Message';
+
 
 
 // function App() {
@@ -55,11 +64,32 @@ import AdminVerifyPage from './Pages/Admin/AdminVerifyPage';
     <Route  path="/addwork" element={<AddWorks />} />
     <Route  path="/display" element={<UserWorkCard />} />
 
-    <Route  path="/inbox" element={<UserInbox />} />
-    <Route  path="/inbox1" element={<UsersInbox />} />
+    <Route  path="/inbox" element={<Message />} />
+    <Route  path="/inbox1/:id" element={<Message />} />
+    <Route  path="/modal" element={<UserWorkDisplay />} />
+
+    <Route  path="/userprofiles" element={<HireUser />} />
+
+    <Route  path="/userselected/:id" element={<UserselectedProfile />} />
+
+
+    <Route  path="/like" element={<Comment />} />
+
+
 
 
     <Route path="/adminWork" element={<AdminVerifyPage />}/>
+
+
+
+    {/* just testing routes */}
+
+    <Route path="/video" element={<VideoCall />}/>
+    <Route path="/room/:roomId" element={<UserVideoCall />}/>
+    <Route path="/premium" element={<AdminPremiumAdd />}/>
+
+    
+    
 
 
     </Routes>

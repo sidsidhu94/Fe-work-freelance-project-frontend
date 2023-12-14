@@ -19,7 +19,7 @@ const SideNavbar = () => {
 
                 </div>
                 <div className='flex items-center gap-[15px] py-[20px] border-b-[1px] border-[#ededed]/[0.3]'>
-                    <h1 className='text-white text-[18px] font-bold leading-[20px]'>Membership</h1>
+                    <h1 onClick={()=>navigate('/premium')} className='text-white text-[18px] font-bold leading-[20px]'>Membership</h1>
 
                 </div>
 
