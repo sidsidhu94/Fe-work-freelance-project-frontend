@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 import axios from "axios";
 import UserWorkDisplay from "../User/UserWorkDisplay";
+import { baseURL } from "../Api/Url";
 
 const AdminDisplayWork = () => {
   const [userwork, setUserwork] = useState([]);
@@ -18,7 +19,7 @@ const AdminDisplayWork = () => {
   useEffect(() => {
     const userwork = async () => {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/account/verify-admin/`
+        `${baseURL}account/verify-admin/`
       );
       console.log(response.data, ">>>>>>>>>>>>this.");
       setUserwork(response.data);

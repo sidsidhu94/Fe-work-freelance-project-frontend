@@ -3,6 +3,7 @@ import React,{useState} from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import toast,{Toaster} from 'react-hot-toast'
+import { baseURL } from "../Api/Url";
 
 const AdminLogin = () => {
 
@@ -32,7 +33,7 @@ const AdminLogin = () => {
         // };
 
         try {
-          const response = await axios.post("http://127.0.0.1:8000/api/account/admin_login/",{email,password})
+          const response = await axios.post(`${baseURL}account/admin_login/`,{email,password})
         const token =response.data.token
         localStorage.setItem('admintoken',token)
         console.log(response,">>>>>>>>>>>>>>")

@@ -1,6 +1,7 @@
+import { baseURL } from "../Components/Api/Url"
 import { apiSlice } from "./apislice"
  
-const USERS_URL = "http://127.0.0.1:8000/api/account"
+const USERS_URL = `${baseURL}account`
 
 export const userapislice = apiSlice.injectEndpoints({
    endpoints:(builder) =>({

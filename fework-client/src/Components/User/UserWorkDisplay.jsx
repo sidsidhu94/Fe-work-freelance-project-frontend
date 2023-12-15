@@ -5,6 +5,7 @@ import Comment from "./Comment";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import toast,{Toaster} from 'react-hot-toast'
+import { baseURL } from "../Api/Url";
 
 
 const UserWorkDisplay = (props) => {
@@ -30,7 +31,7 @@ const UserWorkDisplay = (props) => {
   const appreciateWork = async (workId) => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/account/appreciate/${workId}/`,
+        `${baseURL}account/appreciate/${workId}/`,
         { userId }
       );
       return response;
@@ -44,7 +45,7 @@ const UserWorkDisplay = (props) => {
   const verify = async()=>{
     
     const workId = clickedWork.id;
-    const res = await axios.post(`http://127.0.0.1:8000/api/account/verify-work/${workId}/`)
+    const res = await axios.post(`${baseURL}account/verify-work/${workId}/`)
     if (res.status === 200){
       toast.success("Verified")
       modalClose(false)
@@ -54,7 +55,7 @@ const UserWorkDisplay = (props) => {
   const reject = async()=>{
     
     const workId = clickedWork.id;
-    const res = await axios.post(`http://127.0.0.1:8000/api/account/reject-work/${workId}/`)
+    const res = await axios.post(`${baseURL}account/reject-work/${workId}/`)
     if (res.status === 200){
       toast.success("rejected")
       modalClose(false)

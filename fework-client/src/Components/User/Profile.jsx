@@ -13,6 +13,7 @@ import {
 } from "@nextui-org/react";
 import useRazorpay from "react-razorpay";
 import FollowButton from "./FollowButton";
+import { baseURL } from "../Api/Url";
 
 const Profile = () => {
   const [userprofile, setUserprofile] = useState([]);
@@ -31,7 +32,7 @@ const Profile = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/account/user_profile_display/${userId}`
+          `${baseURL}account/user_profile_display/${userId}`
         );
         console.log(response, "User Profile");
         setUserprofile(response.data);
@@ -46,7 +47,7 @@ const Profile = () => {
     const fetchPremiumPlans = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/account/all-premium/"
+          `${baseURL}account/all-premium/`
         );
         console.log(response, "Premium Plans");
         setPremium(response.data);
@@ -67,7 +68,7 @@ const Profile = () => {
 
     axios({
       method: "post",
-      url: "http://127.0.0.1:8000/api/account/verifygateway",
+      url: `${baseURL}account/verifygateway`,
       data: {
         payment_id: paymentID,
         order_id: orderID,
@@ -96,7 +97,7 @@ const Profile = () => {
 
     axios({
       method: "post",
-      url: "http://127.0.0.1:8000/api/account/paymentgateway",
+      url: `${baseURL}account/paymentgateway`,
       data: {
         id: itemId,
       },

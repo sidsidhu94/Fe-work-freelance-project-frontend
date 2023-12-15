@@ -6,6 +6,7 @@ import { RxText } from "react-icons/rx";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import {useNavigate} from 'react-router-dom'
+import { baseURL } from "../Api/Url";
 const AddWorkPage = () => {
   const { userInfo } = useSelector((state) => state.user);
   const userId = userInfo?.user_id;
@@ -105,7 +106,7 @@ const AddWorkPage = () => {
     try {
       console.log(userId)
       console.log(userId,selectedimages,captionEntered,textWritten,"here just check me ")
-      const res = await axios.post('http://127.0.0.1:8000/api/account/user_work_post/', {userId,selectedimages,captionEntered,textWritten});
+      const res = await axios.post(`${baseURL}account/user_work_post/`, {userId,selectedimages,captionEntered,textWritten});
       console.log('Images sent to the backend:', res.data)
       console.log('Data sent successfully:', res);
       if (res.status == 201){

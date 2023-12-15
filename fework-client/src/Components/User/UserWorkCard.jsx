@@ -12,6 +12,7 @@ import axios from "axios";
 import AddWorkPage from "./AddWorkPage";
 import AddWork from "./AddWork";
 import UserWorkDisplay from "./UserWorkDisplay";
+import { baseURL } from "../Api/Url";
 
 const UserWorkCard = () => {
   const [userwork, setUserwork] = useState([]);
@@ -24,7 +25,7 @@ const UserWorkCard = () => {
   useEffect(() => {
     const userwork = async () => {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/account/user-work/${userId}`
+        `${baseURL}account/user-work/${userId}`
       );
       console.log(response.data, "userWOrk");
       setUserwork(response.data);

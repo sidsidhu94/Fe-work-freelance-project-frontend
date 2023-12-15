@@ -3,6 +3,7 @@ import { BiSolidLike } from "react-icons/bi";
 import { Avatar } from "@nextui-org/react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { baseURL } from "../Api/Url";
 
 const Comment = (props) => {
   const clickedWork = props.clickedWork.id;
@@ -32,7 +33,7 @@ const Comment = (props) => {
   useEffect(() => {
     const userprofile = async () => {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/account/user_profile_display/${userId}`
+        `${baseURL}account/user_profile_display/${userId}`
       );
       console.log(response, ">>>>>>>>>>>>.");
       setUserprofile(response.data);
@@ -46,14 +47,14 @@ const Comment = (props) => {
     try {
       console.log(Comments);
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/account/workcomment/",
+        `${baseURL}account/workcomment/`,
         { Comments, userId, clickedWork }
       );
       console.log(response);
       if (response.status == 200) {
         setComments("");
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/account/user-work/${userId}`
+          `${baseURL}account/user-work/${userId}`
         );
         
       }

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import SelectedUser from '../../Components/User/SelectedUser'
 import HomePageHeader from '../../Components/User/HomePageHeader'
 import SelectedUserWork from '../../Components/User/SelectedUserWork'
+import { baseURL } from '../../Components/Api/Url'
 
 const UserselectedProfile = () => {
 
@@ -14,14 +15,14 @@ const UserselectedProfile = () => {
     useEffect (()=>{
         const useProfile = async()=>{
 
-            const response = await axios.get(`http://127.0.0.1:8000/api/account/user_profile_display/${id}`)
+            const response = await axios.get(`${baseURL}account/user_profile_display/${id}`)
             console.log(response,"check")
             setuserProfile(response.data)
 
         }
         const userwork = async () => {
             const response = await axios.get(
-              `http://127.0.0.1:8000/api/account/user-work/${id}`
+              `${baseURL}account/user-work/${id}`
             );
             console.log(response.data, ">>>>>>>>>>>>this.");
             setUserwork(response.data);

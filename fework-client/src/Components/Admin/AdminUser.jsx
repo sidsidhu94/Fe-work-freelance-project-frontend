@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SideNavbar from "./SideNavbar";
+import { baseURL } from "../Api/Url";
 
 const AdminUser = () => {
   const [modal, setModal] = useState(false);
@@ -26,7 +27,7 @@ const AdminUser = () => {
   const handleRemove = async (id) => {
     console.log(id);
     const response = await axios.delete(
-      `http://127.0.0.1:8000/api/account/remove/${id}`
+      `${baseURL}account/remove/${id}`
     );
     console.log(response, "//////////");
   };
@@ -40,7 +41,7 @@ const AdminUser = () => {
 
   const confirmedEdit = async () => {
     const res = await axios.put(
-      `http://127.0.0.1:8000/api/account/edit/${edit.id}`,
+      `${baseURL}account/edit/${edit.id}`,
       edit
     );
     console.log(res, "///////////////////");

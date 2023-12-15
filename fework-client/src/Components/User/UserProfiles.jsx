@@ -2,6 +2,7 @@ import {React,useState,useEffect} from 'react'
 import {Avatar} from "@nextui-org/react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../Api/Url';
 const UserProfiles = () => {
     const navigate = useNavigate()
 
@@ -15,7 +16,7 @@ const UserProfiles = () => {
 
     useEffect (()=>{
         const userProfiles = async()=>{
-          const response = await axios.get(`http://127.0.0.1:8000/api/account/userprofiles/`)
+          const response = await axios.get(`${baseURL}account/userprofiles/`)
           console.log(response,">>>>>>>>>>>>.")
           setUserprofiles(response.data)
         

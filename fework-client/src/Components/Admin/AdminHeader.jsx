@@ -2,13 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import toast,{Toaster} from 'react-hot-toast'
+import { baseURL } from '../Api/Url'
 const AdminHeader = () => {
 
     const navigate = useNavigate()
 
     const handleLogout = async() =>{
 
-        const response =  await axios.post("http://127.0.0.1:8000/api/account/logout/")
+        const response =  await axios.post(`${baseURL}account/logout/`)
         localStorage.removeItem('admintoken');
         
         navigate('/admin')
