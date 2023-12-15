@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import { baseURL } from '../Api/Url'
 
 const Premium = () => {
 
@@ -20,7 +21,7 @@ const Premium = () => {
       
         try {
             
-          const response = await axios.post("http://127.0.0.1:8000/api/account/add-premium/", { price, Validity });
+          const response = await axios.post(`${baseURL}account/add-premium/`, { price, Validity });
       
           if (response.status === 200) {
             toast.success("Premium added");

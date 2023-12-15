@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { baseURL } from "../Api/Url";
 
 const EditProfile = () => {
 
@@ -27,7 +28,7 @@ const EditProfile = () => {
   const handleSubmit = async(e) =>{
     e.preventDefault()
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/account/user_profile/',{userId,profile_image,username,country,description,skills})
+      const res = await axios.post(`${baseURL}account/user_profile/`,{userId,profile_image,username,country,description,skills})
     } catch (error) {
       console.log(error.message)
     }

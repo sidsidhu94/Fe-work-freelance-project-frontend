@@ -6,6 +6,9 @@ import axios from "axios"; // Uncomment this line if needed
 import Chat from "./Chat/Chat";
 import Conversation from "./Chat/Conversation";
 import { FaVideo } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { baseURL } from "../Api/Url";
+
 
 const UsersInbox = () => {
   const [message, setMessage] = useState("");
@@ -28,7 +31,7 @@ const UsersInbox = () => {
     const fetchMessages = async () => {
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/api/account/get-messages/${userId}/${id}/`
+          `${baseURL}account/get-messages/${userId}/${id}/`
         );
         
 
@@ -145,6 +148,8 @@ const UsersInbox = () => {
   
   const handleVideo = () => {
 
+    
+
 
     navigate('/video')
     
@@ -208,6 +213,13 @@ const UsersInbox = () => {
             <div>
               <Conversation data ={message} />
             </div>
+             {/* {messages?.length === 0 ? (
+              <p>No messages yet. Start a new conversation!</p>
+            ) : (
+              <div>
+                <Conversation data={message} />
+              </div>
+            )} */}
           </div>
         </div>
 
@@ -234,7 +246,7 @@ const UsersInbox = () => {
                 <div className="flex items-center">
                   <div className="flex items-center justify-center bg-rose-500 rounded-full  w-12 h-12 ">
                     <span className="font-semibold text-2xl capitalize text-white">
-                      {chatter[0]}
+                      {/* {chatter[0]} */}
                     </span>
                     
                   </div>
@@ -243,7 +255,9 @@ const UsersInbox = () => {
                 </div>
 
                 <div>
-                  <FaVideo onClick={handleVideo}  className=" w-11 h-8 text-cyan-700" />
+                  {/* <FaVideo onClick={handleVideo} className=" w-11 h-8 text-cyan-700" /> */}
+                  <Link to="/video" target="_blank" rel="noopener noreferrer"><FaVideo  className=" w-11 h-8 text-cyan-700" /></Link>
+                  {/* <FaVideo  href="https://www.w3schools.com/tags/tag_a.asp" target="_blank" className=" w-11 h-8 text-cyan-700" /> */}
                 </div>
               </div>
             </div>
@@ -255,27 +269,27 @@ const UsersInbox = () => {
             <div className="h-[76.5%] absolute top-28 w-[73.7%] ">
               <div className="absolute top-0 flex-grow  max-h-full w-full overflow-y-auto">
                 <div className="flex flex-col space-y-2 p-4">
-                  {messages.map((msg, index) => (
+                  {messages?.map((msg, index) => (
                     <div
                       key={index}
                       className={`${(() => {
-                        console.log(
-                          "her msg.sender",
-                          msg.sender,
-                          "userId",
-                          userId,
-                          msg.content
-                        );
-                        return msg.sender == userId
+                        // console.log(
+                        //   "her msg.sender",
+                        //   msg?.sender,
+                        //   "userId",
+                        //   userId,
+                        //   msg?.content
+                        // );
+                        return msg?.sender == userId
                           ? "self-end justify-end"
                           : "self-start justify-end";
                       })()} bg-${
-                        msg.sender == userId ? "blue-500" : "gray-200"
+                        msg?.sender == userId ? "blue-500" : "gray-200"
                       } text-red rounded-lg p-2 flex items-center`}
                     >
                       <span className="material-icons mr-2"></span>
 
-                      <p>{msg.content}</p>
+                      <p>{msg?.content}</p>
                     </div>
                   ))}
                 </div>

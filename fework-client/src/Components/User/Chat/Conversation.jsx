@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../Api/Url";
 
 const Conversation = ({data}) => {
     console.log(data)
@@ -17,7 +18,7 @@ const Conversation = ({data}) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/account/user-messages/${userId}/`);
+        const response = await axios.get(`${baseURL}account/user-messages/${userId}/`);
         console.log(response)
         setUserData(response.data); 
         

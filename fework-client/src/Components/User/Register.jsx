@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../Api/Url";
 
 
 const Register = () => {
@@ -29,7 +30,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/account/register/",
+        `${baseURL}account/register/`,
         { firstname, lastname, email, phonenumber, password }
       );
       console.log(response, ">>>>>>>>>>>>>>>>>>>>>>>");
@@ -49,7 +50,7 @@ const Register = () => {
 
     try {
         const response = await axios.post(
-            "http://127.0.0.1:8000/api/account/verify_otp/",
+            `${baseURL}account/verify_otp/`,
             { verifyotp,email }
           );
           if (response.status === 201) {
