@@ -54,7 +54,7 @@ const UsersInbox = () => {
   }, [userId, id]);
 
   useEffect(() => {
-    const newSocket = new WebSocket("ws://127.0.0.1:8000/ws/chat/ABC/"); // Replace "ABC" with the appropriate identifier
+    const newSocket = new WebSocket("ws://http://www.shop-electron.shop/ws/chat/ABC/"); // Replace "ABC" with the appropriate identifier
 
     newSocket.onopen = () => {
       isMessageProcessed.current = false;
